@@ -1,0 +1,57 @@
+@import "./../../scss/variables";
+.cinemaNav {
+  position: fixed;
+  z-index: 10;
+  width: 100%;
+  padding: 30px 0 30px 0;
+  &-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 0 auto;
+    max-width: 1830px;
+  }
+  &-nav {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    &-list {
+      display: flex;
+      gap: 30px;
+    }
+    &-item {
+      cursor: pointer;
+      color: $color;
+      font-size: 24px;
+    }
+    &-search {
+      width: 200px;
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      cursor: pointer;
+      color: $color;
+      border: 2px solid $color;
+      border-radius: 60px;
+      padding: 5px 10px;
+      &-input {
+        color: $color;
+        width: 100%;
+        &::placeholder {
+          color: $color;
+        }
+      }
+    }
+  }
+  &-user {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    &-avatar {
+      width: 60px;
+      height: 60px;
+      border-radius: 100px;
+      border: 3px solid $blue;
+    }
+  }
+}

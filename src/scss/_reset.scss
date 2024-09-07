@@ -1,0 +1,16 @@
+@import "./variables";
+* {
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+  list-style-type: none;
+  color: #191919;
+  outline: none;
+  box-sizing: border-box;
+  font-family: "Inter", sans-serif;
+  border: none;
+  background: none;
+  font-weight: 500;
+  font-size: 16px;
+  color: $color;
+}
