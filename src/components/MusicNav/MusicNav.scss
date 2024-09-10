@@ -39,11 +39,20 @@
   &__list {
     display: flex;
     flex-direction: column;
+
     gap: 15px;
   }
   &__item {
     cursor: pointer;
     color: $color;
     font-size: 24px;
+    font-weight: 600;
   }
+}
+
+.active {
+  cursor: pointer;
+  color: $blue;
+  font-size: 24px;
+  font-weight: 600;
 }

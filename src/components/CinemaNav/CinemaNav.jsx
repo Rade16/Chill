@@ -3,7 +3,7 @@ import logo from "../../assets/logo.svg";
 import "./CinemaNav.scss";
 import search from "../../assets/search.svg";
 import avatar from "../../assets/avatar.svg";
-import { Link } from "react-router-dom";
+import { NavLink, Link } from "react-router-dom";
 const CinemaNav = () => {
   return (
     <div className="cinemaNav">
@@ -13,8 +13,22 @@ const CinemaNav = () => {
         </Link>
         <nav className="cinemaNav-nav">
           <ul className="cinemaNav-nav-list">
-            <li className="cinemaNav-nav-item">Фильмы</li>
-            <li className="cinemaNav-nav-item">Сериалы</li>
+            <NavLink
+              to="/cinema/films"
+              className={({ isActive }) => {
+                return isActive ? "active" : "cinemaNav-nav-item";
+              }}
+            >
+              Фильмы
+            </NavLink>
+            <NavLink
+              to="/cinema/series"
+              className={({ isActive }) => {
+                return isActive ? "active" : "cinemaNav-nav-item";
+              }}
+            >
+              Сериалы
+            </NavLink>
           </ul>
           <div className="cinemaNav-nav-search">
             <img src={search} alt="" />

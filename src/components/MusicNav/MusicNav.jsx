@@ -2,7 +2,7 @@ import React from "react";
 import "./MusicNav.scss";
 import logo from "../../assets/logo.svg";
 import search from "../../assets/search.svg";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 const MusicNav = () => {
   return (
     <div className="musicNav">
@@ -19,10 +19,22 @@ const MusicNav = () => {
           />
         </div>
         <ul className="musicNav__list">
-          <li className="musicNav__item">Музыка</li>
-          <li className="musicNav__item">Хиты</li>
-          <li className="musicNav__item">Релизы</li>
-          <li className="musicNav__item">Популярные</li>
+          <NavLink
+            to="/music/main"
+            className={({ isActive }) =>
+              isActive ? "active" : "musicNav__item"
+            }
+          >
+            Главная
+          </NavLink>
+          <NavLink
+            to="/music/collections"
+            className={({ isActive }) =>
+              isActive ? "active" : "musicNav__item"
+            }
+          >
+            Коллекции
+          </NavLink>
         </ul>
       </div>
     </div>
