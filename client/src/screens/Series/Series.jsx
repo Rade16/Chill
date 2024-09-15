@@ -1,14 +1,22 @@
 import React from "react";
 import "./Series.scss";
 import play from "../../assets/cinema/play.svg";
-import promo from "../../assets/cinema/boys.png";
+import promo from "../../assets/series/theBoys1.mp4";
 import FilmPreview from "../../components/FilmPreview/FilmPreview";
 import { filmList } from "../../helper/filmList";
 const Series = () => {
   return (
     <div className="series">
       <div className="series__promo">
-        <img src={promo} alt="" className="series__promo-img" />
+        <video
+          src={promo}
+          alt=""
+          autoPlay
+          muted
+          loop
+          className="cinema__promo-video"
+        />
+        <h1 className="cinema__promo-title">Пацаны</h1>
         <div className="series__promo-button">
           <img src={play} alt="" />
           Начать просмотр
