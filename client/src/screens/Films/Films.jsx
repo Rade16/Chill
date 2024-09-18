@@ -18,6 +18,11 @@ const Films = () => {
       }
     };
     fetchFilms();
+    const intervalId = setInterval(() => {
+      fetchFilms();
+    }, 5000);
+
+    return () => clearInterval(intervalId);
   }, []);
   return (
     <div className="cinema">

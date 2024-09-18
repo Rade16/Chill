@@ -1,10 +1,29 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./Series.scss";
 import play from "../../assets/cinema/play.svg";
 import promo from "../../assets/series/theBoys1.mp4";
-import FilmPreview from "../../components/FilmPreview/FilmPreview";
-import { filmList } from "../../helper/filmList";
+import SeriesPreview from "../../components/SeriesPreview/SeriesPreview";
+import axios from "axios";
+
 const Series = () => {
+  const [series, setSeries] = useState([]);
+
+  useEffect(() => {
+    const fetchSeries = async () => {
+      try {
+        const response = await axios.get("http://localhost:3000/api/series");
+        setSeries(response.data);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+    fetchSeries();
+    const intervalId = setInterval(() => {
+      fetchFilms();
+    }, 5000);
+
+    return () => clearInterval(intervalId);
+  }, []);
   return (
     <div className="series">
       <div className="series__promo">
@@ -25,9 +44,9 @@ const Series = () => {
       <div className="series__container">
         <h1 className="series__title">Все сериалы</h1>
         <div className="series__films">
-          {filmList.map((obj) => {
+          {series.map((obj) => {
             return (
-              <FilmPreview img={obj.img} name={obj.name} link={obj.link} />
+              <SeriesPreview img={obj.image} name={obj.name} link={obj.id} />
             );
           })}
         </div>

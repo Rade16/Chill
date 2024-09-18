@@ -9,6 +9,7 @@ import Music from "./screens/Music/Music.jsx";
 import MusicMain from "./screens/MusicMain/MusicMain.jsx";
 import Collections from "./screens/Collections/Collections.jsx";
 import Series from "./screens/Series/Series.jsx";
+import SeriesPage from "./components/SeriesPage/SeriesPage.jsx";
 import {
   createBrowserRouter,
   RouterProvider,
@@ -40,6 +41,14 @@ const router = createBrowserRouter([
       {
         path: "/cinema/series",
         element: <Series />,
+      },
+      {
+        path: "/cinema/series/:seriesId",
+        element: <SeriesPage />,
+      },
+      {
+        path: "/cinema/series/:seriesId/episode/:episodeId",
+        element: <SeriesPage />,
       },
     ],
   },

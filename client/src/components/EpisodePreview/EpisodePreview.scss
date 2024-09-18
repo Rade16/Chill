@@ -1,0 +1,33 @@
+@import "./../../scss/variables";
+.episodePreview {
+  width: 400px;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  &__img {
+    border-radius: 30px;
+    width: 400px;
+    height: 250px;
+    border: 30px;
+    transition: 300ms;
+    object-fit: cover;
+  }
+  &__name {
+    color: $color;
+    max-width: 100%;
+    word-wrap: wrap;
+    font-weight: 600;
+    font-size: 20px;
+  }
+  &:hover {
+    .episodePreview__img {
+      transform: translateY(-10px);
+    }
+  }
+  &:not(:hover) {
+    .episodePreview__img {
+      filter: brightness(0.75);
+    }
+  }
+}
