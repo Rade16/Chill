@@ -50,6 +50,10 @@ const router = createBrowserRouter([
         path: "/cinema/series/:seriesId/episode/:episodeId",
         element: <SeriesPage />,
       },
+      {
+        path: "/cinema/series/:seriesId/season/:seasonId/episode/:episodeId",
+        element: <SeriesPage />,
+      },
     ],
   },
   {

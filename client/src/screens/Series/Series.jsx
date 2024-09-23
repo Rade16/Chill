@@ -19,7 +19,7 @@ const Series = () => {
     };
     fetchSeries();
     const intervalId = setInterval(() => {
-      fetchFilms();
+      fetchSeries();
     }, 5000);
 
     return () => clearInterval(intervalId);
@@ -46,7 +46,13 @@ const Series = () => {
         <div className="series__films">
           {series.map((obj) => {
             return (
-              <SeriesPreview img={obj.image} name={obj.name} link={obj.id} />
+              <SeriesPreview
+                key={obj.id}
+                img={obj.image}
+                name={obj.name}
+                link={obj.id}
+                seasonNumber={obj.seasonNumber}
+              />
             );
           })}
         </div>

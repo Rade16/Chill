@@ -7,8 +7,8 @@ const seriesRouter = require("./seriesRouter");
 const seasonRouter = require("./seasonRouter");
 
 router.use("/films", filmsRouter);
-router.use("/series/:seriesId/episode", episodeRouter);
 router.use("/series", seriesRouter);
-router.use("/season", seasonRouter);
+router.use("/series/:seriesId/season", seasonRouter);
+router.use("/series/:seriesId/season/:seasonId/episode", episodeRouter);
 
 module.exports = router;

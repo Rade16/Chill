@@ -1,13 +1,12 @@
 const { Season } = require("../models/Season");
 
 class SeasonsController {
-  // Получение всех сезонов
   async getAll(req, res) {
     const seasons = await Season.findAll();
+
     return res.json(seasons);
   }
 
-  // Получение всех сезонов для определенного сериала
   async getBySeries(req, res) {
     const { seriesId } = req.params;
     const seasons = await Season.findAll({
@@ -17,7 +16,13 @@ class SeasonsController {
     return res.json(seasons);
   }
 
-  // Создание нового сезона
+  async getSeasonsBySeries(req, res) {
+    const { seriesId } = req.params;
+    const seasons = await Season.findAll({
+      where: { seriesId },
+    });
+    return res.json(seasons);
+  }
   async create(req, res) {
     const { name, seasonNumber, description, releaseDate, seriesId } = req.body;
     const season = await Season.create({

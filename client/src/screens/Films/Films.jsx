@@ -47,7 +47,12 @@ const Films = () => {
         <div className="cinema__films">
           {films.map((obj) => {
             return (
-              <FilmPreview img={obj.image} name={obj.name} link={obj.id} />
+              <FilmPreview
+                key={obj.id}
+                img={obj.image}
+                name={obj.name}
+                link={obj.id}
+              />
             );
           })}
         </div>

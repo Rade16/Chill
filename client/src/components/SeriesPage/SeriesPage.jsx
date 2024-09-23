@@ -7,24 +7,33 @@ import EpisodePreview from "../../components/EpisodePreview/EpisodePreview";
 import ReactPlayer from "react-player";
 import { useNavigate } from "react-router-dom";
 export const seriesPage = () => {
-  const { seriesId, episodeId } = useParams();
+  const { seriesId, seasonId, episodeId } = useParams();
   const [series, setSeries] = useState({});
   const [episodes, setEpisodes] = useState([]);
   const [episode, setEpisode] = useState({});
+  const [seasons, setSeasons] = useState([]);
+  const [selectedSeasonId, setSelectedSeasonId] = useState(null);
   useEffect(() => {
     const fetchSeries = async () => {
       try {
         const responseSeries = await axios.get(
           `http://localhost:3000/api/series/${seriesId}`
         );
-        const responseEpisodes = await axios.get(
-          `http://localhost:3000/api/series/${seriesId}/episode`
-        );
-        const responseEpisode = await axios.get(
-          `http://localhost:3000/api/series/${seriesId}/episode/${episodeId}`
+        const responseSeason = await axios.get(
+          `http://localhost:3000/api/series/${seriesId}/seasons`
         );
 
-        setEpisodes(responseEpisodes.data);
+        if (selectedSeasonId) {
+          const responseEpisodes = await axios.get(
+            `http://localhost:3000/api/series/${seriesId}/season/${selectedSeasonId}/episodes`
+          );
+          setEpisodes(responseEpisodes.data);
+        }
+
+        const responseEpisode = await axios.get(
+          `http://localhost:3000/api/series/${seriesId}/season/${seasonId}/episode/${episodeId}`
+        );
+        setSeasons(responseSeason.data);
         setEpisode(responseEpisode.data);
         setSeries(responseSeries.data);
       } catch (error) {
@@ -33,11 +42,21 @@ export const seriesPage = () => {
     };
 
     fetchSeries();
-  }, [seriesId, episodeId]);
+  }, [seriesId, selectedSeasonId, episodeId]);
+  const handleSeasonClick = async (seasonId) => {
+    setSelectedSeasonId(seasonId);
+    try {
+      const responseEpisodes = await axios.get(
+        `http://localhost:3000/api/series/${seriesId}/season/${seasonId}/episodes`
+      );
+      setEpisodes(responseEpisodes.data);
+    } catch (error) {
+      console.error("Ошибка при получении серий сезона:", error);
+    }
+  };
 
   return (
     <div className="seriesPage">
-      <CinemaNav />
       <div className="seriesPage__container">
         <div className="seriesPage__player">
           <ReactPlayer
@@ -52,7 +71,24 @@ export const seriesPage = () => {
         <h1 className="seriesPage__seriesName">{episode.name}</h1>
         <p className="seriesPage__description">{episode.description}</p>
 
-        <p className="seriesPage__episodes-title">Серии</p>
+        <div className="seriesPage__seasons">
+          <div className="seriesPage__seasons-line">
+            {seasons.map((obj) => {
+              const isActive = obj.id === selectedSeasonId;
+              return (
+                <h1
+                  className={`seriesPage__seasons-name ${
+                    isActive ? "active" : ""
+                  }`}
+                  key={obj.id}
+                  onClick={() => handleSeasonClick(obj.id)}
+                >
+                  {obj.name}
+                </h1>
+              );
+            })}
+          </div>
+        </div>
         <div className="seriesPage__episodes-line">
           {episodes.map((obj) => {
             return (

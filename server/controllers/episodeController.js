@@ -1,19 +1,18 @@
 const { Episode } = require("../models/Episode");
 const { Season } = require("../models/Season");
-
+const { Series } = require("../models/Series");
 class EpisodesController {
-  // Получение всех эпизодов
   async getAll(req, res) {
     const episodes = await Episode.findAll();
     return res.json(episodes);
   }
 
-  // Получение конкретного эпизода по ID
   async getOne(req, res) {
     const episode = await Episode.findOne({
       where: { id: req.params.id },
-      include: { model: Season, as: "season" }, // Включаем информацию о сезоне
+      include: { model: Season, as: "season" },
     });
+
     if (episode) {
       return res.json(episode);
     } else {
@@ -21,7 +20,14 @@ class EpisodesController {
     }
   }
 
-  // Создание нового эпизода
+  async getEpisodesBySeason(req, res) {
+    const { seasonId } = req.params;
+    const episodes = await Episode.findAll({
+      where: { seasonId: seasonId },
+    });
+    return res.json(episodes);
+  }
+
   async create(req, res) {
     const {
       name,

@@ -21,12 +21,12 @@
     font-size: 20px;
   }
   &:hover {
-    .filmPreview__img {
+    .seriesPreview__img {
       transform: translateY(-10px);
     }
   }
   &:not(:hover) {
-    .filmPreview__img {
+    .seriesPreview__img {
       filter: brightness(0.75);
     }
   }
