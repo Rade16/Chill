@@ -43,7 +43,7 @@ const Films = () => {
         </Link>
       </div>
       <div className="cinema__container">
-        <h1 className="cinema__title">Все фильмы</h1>
+        <h1 className="cinema__title">Все фильмы  </h1>
         <div className="cinema__films">
           {films.map((obj) => {
             return (

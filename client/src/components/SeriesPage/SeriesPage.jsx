@@ -55,13 +55,24 @@ export const seriesPage = () => {
     }
   };
 
+  const handleEpisodeClick = async (episodeId) => {
+    try {
+      const responseEpisode = await axios.get(
+        `http://localhost:3000/api/series/${seriesId}/season/${selectedSeasonId}/episode/${episodeId}`
+      );
+      setEpisode(responseEpisode.data); // Обновляем текущий эпизод
+    } catch (error) {
+      console.error("Ошибка при получении данных эпизода:", error);
+    }
+  };
+
   return (
     <div className="seriesPage">
       <div className="seriesPage__container">
         <div className="seriesPage__player">
           <ReactPlayer
             controls={true}
-            url={series.link}
+            url={episode.link}
             height={"100%"}
             width={"100%"}
             light={<img src="https://example.com/thumbnail.png"></img>}
@@ -98,6 +109,7 @@ export const seriesPage = () => {
                 name={obj.name}
                 link={obj.id}
                 seriesId={seriesId}
+                onClick={() => handleEpisodeClick(obj.id)}
               />
             );
           })}
