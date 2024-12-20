@@ -43,6 +43,7 @@
       justify-content: space-between;
       align-items: center;
       gap: 20px;
+
       &-img {
         width: 150px;
         height: 150px;
@@ -72,11 +73,17 @@
         display: flex;
         flex-direction: column;
         align-items: center;
-        gap: 10px;
+        justify-content: center;
+        gap: 50px;
+        height: 150px;
         &-range {
+          margin-top: 50px;
           display: block;
-          transform: rotate(-90deg);
+          rotate: (-90deg);
           width: 100px;
+        }
+        &-image {
+          display: block;
         }
       }
     }

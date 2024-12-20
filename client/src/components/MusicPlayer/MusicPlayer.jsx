@@ -107,7 +107,11 @@ const MusicPlayer = ({ trackUrl, trackName, trackArtist, trackImg }) => {
               onChange={(e) => setVolume(Number(e.target.value))}
               className="musicPlayer__controls-info-volume-range"
             />
-            <img src={volumeIcon} alt="" />
+            <img
+              src={volumeIcon}
+              alt=""
+              className="musicPlayer__controls-info-volume-image"
+            />
           </div>
         </div>
       </div>
