@@ -10,6 +10,11 @@ const path = require("path");
 const app = express();
 app.use("/covers", express.static(path.join(__dirname, "public", "covers")));
 app.use("/films", express.static(path.join(__dirname, "public", "films")));
+app.use("/music", express.static(path.join(__dirname, "public", "music")));
+app.use(
+  "/musicImage",
+  express.static(path.join(__dirname, "public", "musicImage"))
+);
 app.use(express.json());
 app.use(cors());
 app.use(bodyParser.json());

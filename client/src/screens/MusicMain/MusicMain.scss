@@ -54,4 +54,23 @@
       font-weight: 600;
     }
   }
+  &__player {
+    background: #191a20;
+    padding: 30px 20px;
+    &-container {
+      flex-direction: column;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    &-range {
+      display: block;
+      width: 1000px;
+    }
+    &-button {
+      cursor: pointer;
+      margin-bottom: 10px;
+    }
+  }
 }

@@ -1,0 +1,88 @@
+.musicPlayer {
+  position: absolute;
+  bottom: 0;
+  background: #191a20;
+  width: 100%;
+  padding-bottom: 30px;
+  &__controls {
+    flex-direction: column;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    &-range {
+      margin-bottom: 10px;
+      -webkit-appearance: none;
+      background: #004c9e;
+
+      outline: none;
+      height: 20px;
+      display: block;
+      width: 100%;
+
+      &::-webkit-slider-thumb {
+        -webkit-appearance: none;
+        appearance: none;
+        width: 30px;
+        height: 30px;
+        background: #007aff;
+        border-radius: 10px;
+        cursor: pointer;
+      }
+    }
+    &-time {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      color: #9799a8;
+      margin-bottom: 10px;
+    }
+    &-info {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+      &-img {
+        width: 150px;
+        height: 150px;
+        border-radius: 20px;
+        object-fit: cover;
+      }
+      &-artist {
+        font-size: 16px;
+        font-weight: 500;
+      }
+      &-track {
+        font-size: 30px;
+        margin-bottom: 30px;
+        font-weight: 500;
+      }
+      &-name {
+        font-size: 20px;
+        font-weight: 500;
+        color: #9799a8;
+      }
+      &-button {
+        cursor: pointer;
+        width: 50px;
+        height: 50px;
+      }
+      &-volume {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+        &-range {
+          display: block;
+          transform: rotate(-90deg);
+          width: 100px;
+        }
+      }
+    }
+  }
+  &-button {
+    cursor: pointer;
+    margin-bottom: 10px;
+  }
+}
