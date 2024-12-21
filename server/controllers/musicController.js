@@ -3,8 +3,13 @@ const { Music } = require("../models/Music");
 class MusicController {
   async createMusic(req, res) {
     try {
-      const { name, genre, releaseDate, description, link, image, artist } =
-        req.body;
+      const { name, genre, releaseDate, description, artist } = req.body;
+      const image = req.files.image[0]
+        ? `/musicImage/${req.files.image[0].filename}`
+        : null;
+      const link = req.files.link[0]
+        ? `/music/${req.files.link[0].filename}`
+        : null;
       const newMusic = await Music.create({
         name,
         genre,

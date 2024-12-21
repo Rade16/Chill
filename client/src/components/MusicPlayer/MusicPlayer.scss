@@ -1,8 +1,9 @@
 .musicPlayer {
-  position: absolute;
+  position: fixed;
   bottom: 0;
   background: #191a20;
   width: 1335px;
+  margin: 0 auto;
   left: 50%;
   transform: translateX(-50%);
   padding-bottom: 25px;

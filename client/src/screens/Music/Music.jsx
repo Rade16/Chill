@@ -29,10 +29,10 @@ const Music = () => {
           <Outlet context={{ playTrack, currentTrack }} />
         </div>
         <MusicPlayer
-          trackUrl={currentTrack.link}
+          trackUrl={`http://localhost:3000/public${currentTrack.link}`}
           trackName={currentTrack.name}
           trackArtist={currentTrack.artist}
-          trackImg={currentTrack.image}
+          trackImg={`http://localhost:3000/public${currentTrack.image}`}
         />
       </div>
     </div>

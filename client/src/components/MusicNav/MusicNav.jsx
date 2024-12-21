@@ -28,50 +28,59 @@ const MusicNav = () => {
         <Link to="/transition">
           <img src={logo} alt="" className="musicNav__logo" />
         </Link>
-        <div className="musicNav__search">
-          <img src={search} alt="" />
-          <input
-            type="text"
-            placeholder="Поиск"
-            className="musicNav__search-input"
-          />
+        <div className="musicNav__nav">
+          <nav>
+            <ul className="musicNav__list">
+              <li className="musicNav__item">
+                <NavLink
+                  to="/music/main"
+                  className={({ isActive }) =>
+                    isActive ? "active" : "musicNav__item"
+                  }
+                >
+                  Главная
+                </NavLink>
+              </li>
+              <li>
+                <NavLink
+                  to="/music/collections"
+                  className={({ isActive }) =>
+                    isActive ? "active" : "musicNav__item"
+                  }
+                >
+                  Коллекции
+                </NavLink>
+              </li>
+              <li>
+                <NavLink
+                  to="/music/admin"
+                  className={({ isActive }) =>
+                    isActive ? "active" : "musicNav__item"
+                  }
+                >
+                  Админ-панель
+                </NavLink>
+              </li>
+            </ul>
+          </nav>
+          <div className="musicNav__search">
+            <img src={search} alt="" />
+            <input
+              type="text"
+              placeholder="Поиск"
+              className="musicNav__search-input"
+            />
+          </div>
         </div>
-        <ul className="musicNav__list">
-          <li className="musicNav__item">
-            <NavLink
-              to="/music/main"
-              className={({ isActive }) =>
-                isActive ? "active" : "musicNav__item"
-              }
-            >
-              Главная
-            </NavLink>
-          </li>
-          <li>
-            <NavLink
-              to="/music/collections"
-              className={({ isActive }) =>
-                isActive ? "active" : "musicNav__item"
-              }
-            >
-              Коллекции
-            </NavLink>
-          </li>
-          <li>
-            <NavLink
-              to="/music/admin"
-              className={({ isActive }) =>
-                isActive ? "active" : "musicNav__item"
-              }
-            >
-              Админ-панель
-            </NavLink>
-          </li>
-        </ul>
+
         <div className="musicNav__user">
           <Link to={`/music/profile/${user.id}`}>
             <div className="musicNav__user-link">
-              <img src={avatar} alt="" className="musicNav__user-avatar" />
+              <img
+                src={`http://localhost:3000/public${user.avatar}`}
+                alt=""
+                className="musicNav__user-avatar"
+              />
               <p className="musicNav__user-name">{user.username}</p>
             </div>
           </Link>

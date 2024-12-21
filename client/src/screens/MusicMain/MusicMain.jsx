@@ -37,7 +37,7 @@ const MusicMain = () => {
   return (
     <div className="musicMain">
       <div className="musicMain__container">
-        <h1 className="musicMain__drops-title">Свежие дропы</h1>
+        {/* <h1 className="musicMain__drops-title">Свежие дропы</h1>
         <div className="musicMain__drops">
           <div className="musicMain__drops-line">
             {newTrackList.map((obj) => {
@@ -51,7 +51,7 @@ const MusicMain = () => {
             })}
           </div>
           <div className="musicMain__drops-more">Еще</div>
-        </div>
+        </div> */}
         <h1 className="musicMain__tracks-title">Все треки</h1>
         <div className="musicMain__tracks">
           {allMusic.map((obj) => {
