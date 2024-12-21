@@ -47,48 +47,67 @@ const Admin = () => {
     <div className="admin">
       <div className="admin__container">
         <form action="" className="admin__filmForm" onSubmit={handleFilmSubmit}>
-          <label htmlFor="filmCover" className="admin__filmForm-label">
-            <input
-              type="file"
-              id="filmCover"
-              accept="image/*"
-              className="admin__filmForm-imageInput"
-              onChange={handleFilmImageChange}
-            />
-            <img
-              src={previewFilmImage}
-              alt=""
-              className="admin__filmForm-image"
-            />
-          </label>
-          <input
-            type="file"
-            accept="video/*"
-            className="admin__filmForm-videoInput"
-            onChange={(e) => setFilmVideo(e.target.files[0])}
-          />
-
-          <input
-            type="text"
-            placeholder="Название"
-            onChange={(e) => setFilmName(e.target.value)}
-          />
-          <input
-            type="text"
-            placeholder="Описание"
-            onChange={(e) => setFilmDescription(e.target.value)}
-          />
-          <input
-            type="text"
-            placeholder="Жанр"
-            onChange={(e) => setFilmGenre(e.target.value)}
-          />
-          <input
-            type="date"
-            placeholder="Дата выхода"
-            onChange={(e) => setFilmReleaseDate(e.target.value)}
-          />
-          <button type="submit">Добавить</button>
+          <div className="admin__filmForm-container">
+            <div className="admin__filmForm-imageContainer">
+              <label htmlFor="filmCover" className="admin__filmForm-label">
+                <input
+                  type="file"
+                  id="filmCover"
+                  accept="image/*"
+                  className="admin__filmForm-imageInput"
+                  onChange={handleFilmImageChange}
+                  required
+                />
+                <img
+                  src={previewFilmImage}
+                  alt=""
+                  className="admin__filmForm-image"
+                />
+              </label>
+              <label htmlFor="filmVideo">Добавить видео</label>
+              <input
+                type="file"
+                id="filmVideo"
+                accept="video/*"
+                className="admin__filmForm-videoInput"
+                onChange={(e) => setFilmVideo(e.target.files[0])}
+                required
+              />
+            </div>
+            <div className="admin__filmForm-inputs">
+              <input
+                type="text"
+                placeholder="Название"
+                onChange={(e) => setFilmName(e.target.value)}
+                className="admin__filmForm-inputs-input"
+                required
+              />
+              <input
+                type="text"
+                placeholder="Жанр"
+                onChange={(e) => setFilmGenre(e.target.value)}
+                className="admin__filmForm-inputs-input"
+                required
+              />
+              <input
+                type="date"
+                placeholder="Дата выхода"
+                onChange={(e) => setFilmReleaseDate(e.target.value)}
+                className="admin__filmForm-inputs-input"
+                required
+              />
+              <input
+                type="text"
+                placeholder="Описание"
+                onChange={(e) => setFilmDescription(e.target.value)}
+                className="admin__filmForm-inputs-input"
+                required
+              />
+            </div>
+          </div>
+          <button type="submit" className="admin__filmForm-button">
+            Добавить
+          </button>
         </form>
       </div>
     </div>

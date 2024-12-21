@@ -37,22 +37,36 @@ const MusicNav = () => {
           />
         </div>
         <ul className="musicNav__list">
-          <NavLink
-            to="/music/main"
-            className={({ isActive }) =>
-              isActive ? "active" : "musicNav__item"
-            }
-          >
-            Главная
-          </NavLink>
-          <NavLink
-            to="/music/collections"
-            className={({ isActive }) =>
-              isActive ? "active" : "musicNav__item"
-            }
-          >
-            Коллекции
-          </NavLink>
+          <li className="musicNav__item">
+            <NavLink
+              to="/music/main"
+              className={({ isActive }) =>
+                isActive ? "active" : "musicNav__item"
+              }
+            >
+              Главная
+            </NavLink>
+          </li>
+          <li>
+            <NavLink
+              to="/music/collections"
+              className={({ isActive }) =>
+                isActive ? "active" : "musicNav__item"
+              }
+            >
+              Коллекции
+            </NavLink>
+          </li>
+          <li>
+            <NavLink
+              to="/music/admin"
+              className={({ isActive }) =>
+                isActive ? "active" : "musicNav__item"
+              }
+            >
+              Админ-панель
+            </NavLink>
+          </li>
         </ul>
         <div className="musicNav__user">
           <Link to={`/music/profile/${user.id}`}>

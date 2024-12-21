@@ -132,6 +132,10 @@ const router = createBrowserRouter([
         path: "/music/profile/:id",
         element: <Profile />,
       },
+      {
+        path: "/music/admin",
+        element: <Admin />,
+      },
     ],
   },
 ]);
