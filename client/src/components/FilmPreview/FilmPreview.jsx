@@ -5,7 +5,11 @@ const FilmPreview = (obj) => {
   return (
     <Link to={`/cinema/films/${obj.link}`}>
       <div className="filmPreview">
-        <img src={obj.img} alt="" className="filmPreview__img" />
+        <img
+          src={`http://localhost:3000/public${obj.img}`}
+          alt=""
+          className="filmPreview__img"
+        />
         <p className="filmPreview__name">{obj.name}</p>
       </div>
     </Link>

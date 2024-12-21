@@ -12,7 +12,15 @@ class FilmsController {
   }
 
   async create(req, res) {
-    const { name, genre, releaseDate, description, link, image } = req.body;
+    console.log("Files received:", req.files);
+    console.log("Body received:", req.body);
+    const { name, genre, releaseDate, description } = req.body;
+    const image = req.files.image[0]
+      ? `/covers/${req.files.image[0].filename}`
+      : null;
+    const link = req.files.link[0]
+      ? `/films/${req.files.link[0].filename}`
+      : null;
     const film = await Film.create({
       name,
       genre,

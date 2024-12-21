@@ -5,12 +5,13 @@
   top: 0;
   position: sticky;
   height: 100vh;
-  width: 350px;
+  min-width: 350px;
   background: $bg-block;
   border-radius: 0 30px 30px 0;
   &__logo {
   }
   &__container {
+    height: 100%;
     display: flex;
     flex-direction: column;
     gap: 30px;
@@ -47,6 +48,35 @@
     color: $color;
     font-size: 24px;
     font-weight: 600;
+  }
+
+  &__user {
+    cursor: pointer;
+    margin-bottom: 30px;
+    display: flex;
+    margin-top: auto;
+    align-items: center;
+    gap: 10px;
+    &-link {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    &-avatar {
+      width: 70px;
+      height: 70px;
+      border-radius: 100px;
+      border: 3px solid $blue;
+    }
+    &-name {
+      color: $color;
+      font-size: 24px;
+      font-weight: 600;
+    }
+    &-logout {
+      width: 30px;
+      height: 30px;
+    }
   }
 }
 

@@ -15,6 +15,8 @@ app.use(
   "/musicImage",
   express.static(path.join(__dirname, "public", "musicImage"))
 );
+app.use("/users", express.static(path.join(__dirname, "public", "users")));
+app.use("/public", express.static(path.join(__dirname, "public")));
 app.use(express.json());
 app.use(cors());
 app.use(bodyParser.json());

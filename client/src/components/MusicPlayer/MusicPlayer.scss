@@ -2,8 +2,12 @@
   position: absolute;
   bottom: 0;
   background: #191a20;
-  width: 100%;
-  padding-bottom: 30px;
+  width: 1335px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding-bottom: 25px;
+  border-radius: 50px;
+  margin-bottom: 30px;
   &__controls {
     flex-direction: column;
     width: 100%;
@@ -14,19 +18,19 @@
       margin-bottom: 10px;
       -webkit-appearance: none;
       background: #004c9e;
-
+      border-radius: 30px;
       outline: none;
-      height: 20px;
+      height: 10px;
       display: block;
-      width: 100%;
+      width: 95%;
 
       &::-webkit-slider-thumb {
         -webkit-appearance: none;
         appearance: none;
-        width: 30px;
-        height: 30px;
+        width: 15px;
+        height: 15px;
         background: #007aff;
-        border-radius: 10px;
+        border-radius: 5px;
         cursor: pointer;
       }
     }
@@ -36,17 +40,23 @@
       align-items: center;
       width: 100%;
       color: #9799a8;
-      margin-bottom: 10px;
     }
     &-info {
-      display: flex;
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
       justify-content: space-between;
       align-items: center;
+      width: 90%;
       gap: 20px;
 
+      &-music {
+        display: flex;
+        align-items: center;
+        gap: 30px;
+      }
       &-img {
-        width: 150px;
-        height: 150px;
+        width: 100px;
+        height: 100px;
         border-radius: 20px;
         object-fit: cover;
       }
@@ -55,12 +65,12 @@
         font-weight: 500;
       }
       &-track {
-        font-size: 30px;
-        margin-bottom: 30px;
+        font-size: 25px;
+        margin-bottom: 10px;
         font-weight: 500;
       }
       &-name {
-        font-size: 20px;
+        font-size: 16px;
         font-weight: 500;
         color: #9799a8;
       }
@@ -70,16 +80,14 @@
         height: 50px;
       }
       &-volume {
+        margin-left: auto;
         display: flex;
-        flex-direction: column;
         align-items: center;
         justify-content: center;
-        gap: 50px;
-        height: 150px;
+        gap: 10px;
         &-range {
-          margin-top: 50px;
           display: block;
-          rotate: (-90deg);
+
           width: 100px;
         }
         &-image {

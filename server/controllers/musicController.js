@@ -1,4 +1,4 @@
-const { Music } = require("../models/music");
+const { Music } = require("../models/Music");
 
 class MusicController {
   async createMusic(req, res) {

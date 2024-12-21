@@ -1,0 +1,27 @@
+.admin {
+  padding: 1px;
+  &__container {
+    padding-bottom: 100px;
+    width: 1335px;
+    margin: 0 auto;
+    margin-top: 150px;
+  }
+  &__filmForm {
+    &-label {
+      cursor: pointer;
+      display: block;
+      width: 250px;
+      height: 400px;
+      border-radius: 30px;
+      background: #191a20;
+    }
+    &-imageInput {
+      display: none;
+    }
+    &-image {
+      width: 100%;
+      height: 100%;
+      border-radius: 30px;
+    }
+  }
+}

@@ -29,7 +29,7 @@ export const FilmPage = (obj) => {
         <div className="filmPage__player">
           <ReactPlayer
             controls={true}
-            url={film.link}
+            url={`http://localhost:3000/public${film.link}`}
             height={"100%"}
             width={"100%"}
             light={<img src="https://example.com/thumbnail.png"></img>}

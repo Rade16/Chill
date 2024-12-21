@@ -77,18 +77,20 @@ const MusicPlayer = ({ trackUrl, trackName, trackArtist, trackImg }) => {
           {formatTime(currentTime)} / {formatTime(duration)}
         </span>
         <div className="musicPlayer__controls-info">
-          <img
-            src={trackImg}
-            alt=""
-            className="musicPlayer__controls-info-img"
-          />
-          <div className="musicPlayer__controls-info-artist">
-            <p className="musicPlayer__controls-info-track">
-              {trackName || "No Track Selected"}
-            </p>
-            <p className="musicPlayer__controls-info-name">
-              {trackArtist || "Unknown Artist"}
-            </p>
+          <div className="musicPlayer__controls-info-music">
+            <img
+              src={trackImg}
+              alt=""
+              className="musicPlayer__controls-info-img"
+            />
+            <div className="musicPlayer__controls-info-artist">
+              <p className="musicPlayer__controls-info-track">
+                {trackName || "No Track Selected"}
+              </p>
+              <p className="musicPlayer__controls-info-name">
+                {trackArtist || "Unknown Artist"}
+              </p>
+            </div>
           </div>
           <button onClick={togglePlayPause}>
             <img
@@ -98,6 +100,11 @@ const MusicPlayer = ({ trackUrl, trackName, trackArtist, trackImg }) => {
             />
           </button>
           <div className="musicPlayer__controls-info-volume">
+            <img
+              src={volumeIcon}
+              alt=""
+              className="musicPlayer__controls-info-volume-image"
+            />
             <input
               type="range"
               min="0"
@@ -106,11 +113,6 @@ const MusicPlayer = ({ trackUrl, trackName, trackArtist, trackImg }) => {
               value={volume}
               onChange={(e) => setVolume(Number(e.target.value))}
               className="musicPlayer__controls-info-volume-range"
-            />
-            <img
-              src={volumeIcon}
-              alt=""
-              className="musicPlayer__controls-info-volume-image"
             />
           </div>
         </div>
