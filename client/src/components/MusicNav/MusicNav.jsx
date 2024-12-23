@@ -51,16 +51,18 @@ const MusicNav = () => {
                   Коллекции
                 </NavLink>
               </li>
-              <li>
-                <NavLink
-                  to="/music/admin"
-                  className={({ isActive }) =>
-                    isActive ? "active" : "musicNav__item"
-                  }
-                >
-                  Админ-панель
-                </NavLink>
-              </li>
+              {user.role === "admin" && (
+                <li>
+                  <NavLink
+                    to="/music/admin"
+                    className={({ isActive }) =>
+                      isActive ? "active" : "musicNav__item"
+                    }
+                  >
+                    Админ-панель
+                  </NavLink>
+                </li>
+              )}
             </ul>
           </nav>
           <div className="musicNav__search">

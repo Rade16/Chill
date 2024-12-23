@@ -55,6 +55,13 @@ class authController {
   async login(req, res) {
     console.log("Полученные данные для входа:", req.body);
     try {
+      const errors = validationResult(req);
+      if (!errors.isEmpty()) {
+        return res.status(400).json({
+          message: "Ошибка при регистрации",
+          errors: errors.array().map((error) => error.msg),
+        });
+      }
       const { email, password } = req.body;
 
       const user = await User.findOne({ where: { email } });

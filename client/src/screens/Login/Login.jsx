@@ -30,9 +30,18 @@ const Login = () => {
       );
 
       setUser(userResponse.data.user);
+      alert("Вы вошли в аккаунт");
       navigate("/transition");
       console.log(response.data);
     } catch (error) {
+      if (error.response && error.response.data) {
+        const { errors } = error.response.data;
+        if (Array.isArray(errors)) {
+          alert(errors.join("\n"));
+        } else {
+          alert(error.response.data.message);
+        }
+      }
       console.log(error);
     }
   };
