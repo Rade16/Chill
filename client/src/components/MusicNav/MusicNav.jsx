@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "./MusicNav.scss";
 import logo from "../../assets/logo.svg";
 import search from "../../assets/search.svg";
@@ -7,19 +7,24 @@ import avatar from "../../assets/avatar.svg";
 import { useAuth } from "../../context/AuthContext";
 import { useNavigate } from "react-router-dom";
 import exit from "../../assets/exit.svg";
-const MusicNav = () => {
+const MusicNav = ({ onSearch }) => {
   const { user, setUser } = useAuth();
   if (!user) {
     return <p>Загрузка...</p>;
   }
 
   const navigate = useNavigate();
-
+  const [searchQuery, setSearchQuery] = useState("");
   const handleLogout = () => {
     setUser(null);
     localStorage.removeItem("token");
     navigate("/login");
     alert("Вы вышли из аккаунта");
+  };
+  const handleInputChange = (e) => {
+    const query = e.target.value;
+    setSearchQuery(query);
+    onSearch(query);
   };
 
   return (
@@ -71,6 +76,8 @@ const MusicNav = () => {
               type="text"
               placeholder="Поиск"
               className="musicNav__search-input"
+              value={searchQuery}
+              onChange={handleInputChange}
             />
           </div>
         </div>
