@@ -5,8 +5,11 @@ import promo from "../../assets/film/malchishnik.mp4";
 import FilmPreview from "../../components/FilmPreview/FilmPreview";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import { useOutletContext } from "react-router-dom";
 const Films = () => {
   const [films, setFilms] = useState([]);
+  const { searchQuery } = useOutletContext();
+  const [filteredFilms, setFilteredFilms] = useState([]);
 
   useEffect(() => {
     const fetchFilms = async () => {
@@ -24,6 +27,17 @@ const Films = () => {
 
     return () => clearInterval(intervalId);
   }, []);
+
+  useEffect(() => {
+    if (!searchQuery) {
+      setFilteredFilms(films);
+    } else {
+      const filtered = films.filter((films) =>
+        films.name.toLowerCase().includes(searchQuery.toLowerCase())
+      );
+      setFilteredFilms(filtered);
+    }
+  }, [searchQuery, films]);
   return (
     <div className="cinema">
       <div className="cinema__promo">
@@ -43,9 +57,9 @@ const Films = () => {
         </Link>
       </div>
       <div className="cinema__container">
-        <h1 className="cinema__title">Все фильмы  </h1>
+        <h1 className="cinema__title">Все фильмы </h1>
         <div className="cinema__films">
-          {films.map((obj) => {
+          {filteredFilms.map((obj) => {
             return (
               <FilmPreview
                 key={obj.id}

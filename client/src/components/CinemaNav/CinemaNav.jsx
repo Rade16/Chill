@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import logo from "../../assets/logo.svg";
 import "./CinemaNav.scss";
 import search from "../../assets/search.svg";
@@ -9,18 +9,24 @@ import { useNavigate } from "react-router-dom";
 import exit from "../../assets/exit.svg";
 import { use } from "react";
 
-const CinemaNav = () => {
+const CinemaNav = ({ onSearch }) => {
   const { user, setUser } = useAuth();
   if (!user) {
     return <p>Загрузка...</p>;
   }
   const navigate = useNavigate();
-
+  const [searchQuery, setSearchQuery] = useState("");
   const handleLogout = () => {
     setUser(null);
     localStorage.removeItem("token");
     navigate("/login");
     alert("Вы вышли из аккаунта");
+  };
+
+  const handleInputChange = (e) => {
+    const query = e.target.value;
+    setSearchQuery(query);
+    onSearch(query);
   };
   console.log(user);
   return (
@@ -70,6 +76,8 @@ const CinemaNav = () => {
               type="text"
               placeholder="Поиск"
               className="cinemaNav-nav-search-input"
+              value={searchQuery}
+              onChange={handleInputChange}
             />
           </div>
         </nav>

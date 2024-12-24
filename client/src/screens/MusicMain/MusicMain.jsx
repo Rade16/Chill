@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "./MusicMain.scss";
-import { trackList } from "../../helper/trackList";
 import TrackPreview from "../../components/TrackPreview/TrackPreview";
-import { newTrackList } from "../../helper/newTrackList";
 import axios from "axios";
 import { useOutletContext } from "react-router-dom";
 
