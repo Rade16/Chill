@@ -114,6 +114,7 @@ class authController {
     }
   }
 
+
   async updateUser(req, res) {
     try {
       console.log("Получен запрос на обновление:", req.params.id, req.body);

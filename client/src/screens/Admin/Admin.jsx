@@ -9,6 +9,7 @@ const Admin = () => {
   const [previewFilmImage, setPreviewFilmImage] = useState(null);
   const [filmGenere, setFilmGenre] = useState(null);
   const [filmReleaseDate, setFilmReleaseDate] = useState(null);
+
   const [musicImage, setMusicImage] = useState(null);
   const [musicVideo, setMusicVideo] = useState(null);
   const [musicName, setMusicName] = useState(null);
