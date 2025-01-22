@@ -8,6 +8,7 @@ const Music = () => {
   const [currentTrack, setCurrentTrack] = useState({
     url: "",
   });
+  const [searchQuery, setSearchQuery] = useState("");
   const audioRef = useRef(null); // Создаём ссылку на аудиоплеер
   const playTrack = (track) => {
     console.log("Selected track:", track); // Для отладки
@@ -23,10 +24,10 @@ const Music = () => {
   };
   return (
     <div className="music">
-      <MusicNav />
+      <MusicNav onSearch={setSearchQuery} />
       <div className="music__wrapper">
         <div className="music__container">
-          <Outlet context={{ playTrack, currentTrack }} />
+          <Outlet context={{ playTrack, currentTrack, searchQuery }} />
         </div>
         <MusicPlayer
           trackUrl={`http://localhost:3000/public${currentTrack.link}`}

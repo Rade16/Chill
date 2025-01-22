@@ -16,10 +16,18 @@ const Registration = () => {
         "http://localhost:3000/api/auth/registration",
         { username, email, password }
       );
+      alert("Вы зарегистрировались");
       navigate("/login");
       console.log(response.data);
     } catch (error) {
-      console.log(error);
+      if (error.response && error.response.data) {
+        const { errors } = error.response.data;
+        if (Array.isArray(errors)) {
+          alert(errors.join("\n"));
+        } else {
+          alert(error.response.data.message);
+        }
+      }
     }
   };
 

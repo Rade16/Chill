@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "./MusicMain.scss";
-import { trackList } from "../../helper/trackList";
 import TrackPreview from "../../components/TrackPreview/TrackPreview";
-import { newTrackList } from "../../helper/newTrackList";
 import axios from "axios";
 import { useOutletContext } from "react-router-dom";
 
@@ -12,6 +10,8 @@ const MusicMain = () => {
   const audioRef = React.createRef();
   const [allMusic, setAllMusic] = useState([]);
   const [currentTrack, setCurrentTrack] = useState("");
+  const [filteredMusic, setFilteredMusic] = useState([]);
+  const { searchQuery } = useOutletContext();
 
   useEffect(() => {
     if (currentTrack && audioRef.current) {
@@ -34,6 +34,17 @@ const MusicMain = () => {
     };
     fetchMusic();
   }, []);
+
+  useEffect(() => {
+    if (!searchQuery) {
+      setFilteredMusic(allMusic);
+    } else {
+      const filtered = allMusic.filter((musics) =>
+        musics.name.toLowerCase().includes(searchQuery.toLowerCase())
+      );
+      setFilteredMusic(filtered);
+    }
+  }, [searchQuery, allMusic]);
   return (
     <div className="musicMain">
       <div className="musicMain__container">
@@ -54,7 +65,7 @@ const MusicMain = () => {
         </div> */}
         <h1 className="musicMain__tracks-title">Все треки</h1>
         <div className="musicMain__tracks">
-          {allMusic.map((obj) => {
+          {filteredMusic.map((obj) => {
             return (
               <TrackPreview
                 img={obj.image}
